@@ -59,6 +59,14 @@ class OS
     end
   end
 
+  def self.freebsd?
+    if (host_os =~ /freebsd/)
+      true
+    else
+      false
+    end
+  end
+
   def self.iron_ruby?
    @iron_ruby ||= begin
      if defined?(RUBY_ENGINE) && (RUBY_ENGINE == 'ironruby')
