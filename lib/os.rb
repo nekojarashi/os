@@ -11,9 +11,23 @@ class OS
     @config ||= RbConfig::CONFIG
   end
 
+  def self.nickname
+    if OS.windows?
+      'windows'
+    elsif OS.mac?
+      'darwin'
+    elsif OS.linux?
+      'linux'
+    elsif OS.freebsd?
+      'freebsd'
+    else
+      nil
+    end
+  end
+
   # true if on windows [and/or jruby]
   # false if on linux or cygwin on windows
-  
+
   def self.windows?
     @windows ||= begin
       if RUBY_PLATFORM =~ /cygwin/ # i386-cygwin
